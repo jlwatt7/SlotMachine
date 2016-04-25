@@ -58,7 +58,7 @@ public class Validator { // Bill's Validator class blatantly stolen for my
 				System.out.print("Don't try betting money you don't have, fool! (you have " + max + " dollars left): ");
 			i = readValidInt();
 			} else { 
-				System.out.print("Please enter a valid bet (" + min + "-" + max +")");
+				System.out.print("Please enter a valid bet (" + min + "-" + 5 +")");
 			i = readValidInt();
 			}
 		}

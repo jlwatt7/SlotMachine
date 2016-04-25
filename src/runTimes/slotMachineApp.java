@@ -1,15 +1,15 @@
 package runTimes;
-import java.util.*;
-//import sun.audio.*;
-//import java.io.*;
+import javax.sound.sampled.*;
+import java.io.*;
 
 public class slotMachineApp {
  
 public static void main(String[] args)
-//throws Exception
+
 {	
-	//String slotSound = "77905__milton__playing-a-slot-machine.mp3";
-	//InputStream in = new FileInputStream(slotSound);
+	
+	File slot = new File("SMplay.wav");
+	//File lose = new File("SMlose.wav");
 	
 	int [ ] pull = new int [3];
 	User user = new User();
@@ -28,7 +28,7 @@ public static void main(String[] args)
 	System.out.println("How much do you want to bet on this pull? ($1-$5)");
 	LeverPull.setBet(Validator.getValidBet(1,user.getAccountBalance()));
 	user.setAccountBalance(user.getAccountBalance()-LeverPull.getBet());
-	
+	PlaySound(slot);
 	pull = LeverPull.getSinglePull();
 	
 	System.out.println("Your numbers");
@@ -39,5 +39,14 @@ public static void main(String[] args)
 	System.out.println("Would you like to pull again? (Y/N)");
 	userContinue = Validator.readYorN("Y", "N");
 	}
-	}	
+}
+public static void PlaySound(File Sound) {
+	try {
+		Clip clip = AudioSystem.getClip();
+		clip.open(AudioSystem.getAudioInputStream(Sound));
+		clip.start();
+	} catch (Exception e) {
+
+	}
+}
 }
