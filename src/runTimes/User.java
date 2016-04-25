@@ -4,7 +4,13 @@ public class User {
 
 	public String name;
 	public int accountBalance;
-	public User(){
+	
+	public User(String name, int accountBalance){
+		this.name=name;
+		this.accountBalance = accountBalance;
+	}
+	
+	public User() {
 		
 	}
 	
