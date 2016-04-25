@@ -12,28 +12,27 @@ import java.util.ArrayList;
 
 public class fileIOHandler {
 
-	static String[] customerInfo = new String[2];
+	static String[] userInfo = new String[2];
 	static String name = "";
-	static String email = "";
-	static int points = 0;
+	static int dollars = 0;
 
 public static void saveData(ArrayList<User> customers) {
 
-	Path customerPath = Paths.get("CustomerInformation.txt");
-	File customerFile = customerPath.toFile();
+	Path userPath = Paths.get("UserInformation.txt");
+	File userFile = userPath.toFile();
 
 	try {
-		FileReader read = new FileReader(customerFile);
+		FileReader read = new FileReader(userFile);
 		BufferedReader in = new BufferedReader(read);
 		
-		FileWriter out = new FileWriter(customerFile);
+		FileWriter out = new FileWriter(userFile);
 			
 			for (int i = 0; i < customers.size(); i++) {
 		User user = customers.get(i);
-		customerInfo[0] = user.getName();
-		customerInfo[1] = Integer.toString(user.getAccountBalance());
+		userInfo[0] = user.getName();
+		userInfo[1] = Integer.toString(user.getAccountBalance());
 		
-		out.append(customerInfo[0] + "," + customerInfo[1] +"\n");
+		out.append(userInfo[0] + "," + userInfo[1] +"\n");
 			}
 		out.close();
 		in.close();
@@ -51,23 +50,23 @@ public static void saveData(ArrayList<User> customers) {
 
 
 public static ArrayList<User> readData() {
-	int points = 0;
-	String[] lineItem = new String[3];
+	int dollars = 0;
+	String[] lineItem = new String[2];
 	ArrayList<User> customers = new ArrayList<User>();
 
-	Path countriesPath = Paths.get("CustomerInformation.txt");
-	File countriesFile = countriesPath.toFile();
+	Path userPath = Paths.get("UserInformation.txt");
+	File UserFile = userPath.toFile();
 
 	try {
-		FileReader r = new FileReader(countriesFile);
+		FileReader r = new FileReader(UserFile);
 		BufferedReader in = new BufferedReader(r);
 		String line = in.readLine();
 
 		while (line != null) {
 			if (!line.equals(""))
 				lineItem = line.split(",");
-			points = Integer.parseInt(lineItem[1]);
-			User user = new User(lineItem[0], points);
+			dollars = Integer.parseInt(lineItem[1]);
+			User user = new User(lineItem[0], dollars);
 			customers.add(user);
 			line = in.readLine();
 		}
