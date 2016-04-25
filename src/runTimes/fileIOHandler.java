@@ -48,7 +48,6 @@ public static void saveData(ArrayList<User> customers) {
 	}
 }
 
-
 public static ArrayList<User> readData() {
 	int dollars = 0;
 	String[] lineItem = new String[2];
@@ -78,5 +77,7 @@ public static ArrayList<User> readData() {
 	}
 	return customers;
 }
+
+
 }
 

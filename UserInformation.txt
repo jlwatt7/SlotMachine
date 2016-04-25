@@ -1,0 +1,6 @@
+Alex,500
+James,500
+Jamilah,495
+Trevon,500
+Jim,375
+John,297
